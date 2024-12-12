@@ -7,8 +7,8 @@ DATA = {
         'соль, ч.л.': 0.5,
     },
     'pasta': {
-        'макароны, г': 0.3,
-        'сыр, г': 0.05,
+        'макароны, кг': 0.3,
+        'сыр, кг': 0.05,
     },
     'buter': {
         'хлеб, ломтик': 1,
@@ -18,6 +18,13 @@ DATA = {
     },
     # можете добавить свои рецепты ;)
 }
+
+
+def recipe_view(request, recipe, servings=1):
+    for key in DATA:
+        for ingredients in DATA[key]:
+            amount = DATA[key][ingredients] * servings
+    return render(request, 'calculator/index.html', {'recipe': {ingredients: amount}})
 
 # Напишите ваш обработчик. Используйте DATA как источник данных
 # Результат - render(request, 'calculator/index.html', context)
