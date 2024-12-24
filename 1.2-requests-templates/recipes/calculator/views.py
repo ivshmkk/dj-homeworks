@@ -21,10 +21,17 @@ DATA = {
 
 
 def recipe_view(request, recipe, servings=1):
-    for key in DATA:
-        for ingredients in DATA[key]:
-            amount = DATA[key][ingredients] * servings
-    return render(request, 'calculator/index.html', {'recipe': {ingredients: amount}})
+    if servings not in request.GET:
+        servings = int(request.GET.get("servings", 1))
+    else:
+        servings = 1
+    for ingredients, amount in DATA[recipe].items():
+        DATA[recipe][ingredients] = amount * servings
+    context = {
+        'recipe': DATA[recipe]
+    }
+
+    return render(request, 'calculator/index.html', context)
 
 # Напишите ваш обработчик. Используйте DATA как источник данных
 # Результат - render(request, 'calculator/index.html', context)
