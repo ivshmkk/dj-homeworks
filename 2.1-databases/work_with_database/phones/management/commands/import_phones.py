@@ -1,9 +1,8 @@
 import csv
 
 from django.core.management.base import BaseCommand
-from work_with_database.phones.models import Phone
+from phones.models import Phone
 from django.utils.text import slugify
-
 
 class Command(BaseCommand):
     def add_arguments(self, parser):
