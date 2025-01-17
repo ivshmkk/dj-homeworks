@@ -10,6 +10,26 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.AlterField(
+            model_name='student',
+            name='group',
+            field=models.CharField(max_length=10, verbose_name='Класс'),
+        ),
+        migrations.AlterField(
+            model_name='student',
+            name='name',
+            field=models.CharField(max_length=30, verbose_name='Имя'),
+        ),
+        migrations.AlterField(
+            model_name='teacher',
+            name='name',
+            field=models.CharField(max_length=30, verbose_name='Имя'),
+        ),
+        migrations.AlterField(
+            model_name='teacher',
+            name='subject',
+            field=models.CharField(max_length=10, verbose_name='Предмет'),
+        ),
         migrations.RemoveField(
             model_name='student',
             name='teacher',
